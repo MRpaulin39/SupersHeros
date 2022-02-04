@@ -21,16 +21,30 @@ public class Heros {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name) throws BeanException{
+        if (name.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (name.length() > 50) {
+            throw new BeanException("Champ 'Nom du Héro' invalide ! (50 caractère maximum)");
+        } else {
+            this.name = name;
+        }
+
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String password) throws BeanException {
+        if (password.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (password.length() > 60) {
+            throw new BeanException("Champ 'Mot de passe' invalide ! (60 caractère maximum)");
+        } else {
+            this.password = password;
+        }
+
     }
 
     public String getCity() {

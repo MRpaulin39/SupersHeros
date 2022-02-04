@@ -1,5 +1,6 @@
 package com.supersheros.controllers;
 
+import com.supersheros.beans.BeanException;
 import com.supersheros.beans.Heros;
 import com.supersheros.dao.DaoException;
 import com.supersheros.dao.DaoFactory;
@@ -10,6 +11,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
@@ -25,14 +27,16 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
-            //Todo : Faire un truc + propre
-            response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
+                    //Todo : Faire un truc + propre
+                    response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+                }
 
-//            for(Cookie cookie : cookies){
-//                if(cookie.getName().equals("NameHero")){
-//                    request.setAttribute("NameHero", cookie.getValue());
-//                }
-//            }
+            }
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
+
         } else {
             this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
         }
@@ -43,23 +47,28 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Heros heros = new Heros();
-        heros.setName(request.getParameter("NameHero"));
-        heros.setPassword(request.getParameter("PasswordHero"));
-
         try {
+            heros.setName(request.getParameter("NameHero"));
+            heros.setPassword(request.getParameter("PasswordHero"));
+
             if(loginDao.checkAuthentification(heros)){
                 request.setAttribute("erreur", "Authentification réussi !");
 
                 response.addCookie(new Cookie("NameHero", heros.getName()));
 
+                //Todo : Faire un truc + propre
+                response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+
             } else {
                 request.setAttribute("erreur", "Authentification ratée !");
+                request.setAttribute("NameHero", request.getParameter("NameHero"));
             }
-        } catch (DaoException e) {
+
+        } catch (BeanException | DaoException e) {
             request.setAttribute("erreur", e.getMessage());
+            request.setAttribute("NameHero", request.getParameter("NameHero"));
         }
 
-        request.setAttribute("NameHero", request.getParameter("NameHero"));
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
     }
