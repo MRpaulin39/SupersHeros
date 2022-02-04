@@ -1,0 +1,119 @@
+body {
+  margin: 0px;
+}
+
+.CenterText {
+  text-align: center;
+  list-style: none;
+}
+
+.CenterText li {
+  display: list-item;
+}
+
+nav {
+  background-color: #000;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: grid;
+}
+
+nav ul li a {
+  background-color: #EEE51A;
+  border: #000 1px solid;
+  padding: 5px;
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+}
+
+nav ul li a:hover {
+  background-color: #F4C03E;
+  color: #FFF;
+}
+
+.Form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.Form fieldset ul {
+  margin: 15px;
+  padding: 0px;
+  list-style: none;
+}
+
+.Form fieldset ul li {
+  display: list-item;
+}
+
+.Form fieldset ul li a {
+  padding: 5px;
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+}
+
+.CbList table {
+  margin: 0 auto;
+}
+
+.CbList table tr td {
+  padding: 3px;
+}
+
+/* Extra Extra small devices (phones, 480px and down) */
+@media only screen and (max-width: 480px) {
+  nav ul li {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Extra Small devices (phones, 480px and up) */
+@media only screen and (min-width: 480px) {
+  nav ul li {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  nav ul li {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  nav ul li a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  nav ul li {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  nav ul li a {
+    padding: 10px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  nav ul li {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  nav ul li a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
