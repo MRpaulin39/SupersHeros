@@ -1,13 +1,11 @@
 package com.supersheros.dao;
 
-import com.supersheros.beans.ListIncidents;
-
-import java.util.List;
+import com.supersheros.beans.Heros;
 
 public interface ListIncidentDao {
 
-    /**
-     * @return Retourne la liste des incidents possible (ID + Nom)
-     */
-    List<ListIncidents> lister() throws DaoException;
+
+    boolean addIncidentToHero(String nameHero, int id_incident) throws DaoException;
+
+    boolean deleteIncidentToHero() throws DaoException;
 }

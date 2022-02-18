@@ -4,7 +4,6 @@ import com.supersheros.beans.BeanException;
 import com.supersheros.beans.Heros;
 import com.supersheros.dao.DaoException;
 import com.supersheros.dao.DaoFactory;
-import com.supersheros.dao.ListIncidentDao;
 import com.supersheros.dao.LoginDao;
 
 import javax.servlet.*;
@@ -35,11 +34,9 @@ public class Login extends HttpServlet {
 
             }
 
-            this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
-
-        } else {
-            this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
         }
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
 
 
     }

@@ -32,12 +32,22 @@ public class DaoFactory {
     }
 
 //     Récupération du Dao
-    public ListIncidentDao getListIncidentDao() {
-        return new ListIncidentDaoImpl(this);
+    public IncidentDao getIncidentDao() {
+        return new IncidentDaoImpl(this);
     }
 
     public LoginDao getLoginDao() {
         return new LoginDaoImpl(this) {
+        };
+    }
+
+    public RegisterDao getRegisterDao() {
+        return new RegisterDaoImpl(this) {
+        };
+    }
+
+    public ListIncidentDao getListIncidentDao() {
+        return new ListIncidentDaoImpl(this) {
         };
     }
 }

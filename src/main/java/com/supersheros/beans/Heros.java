@@ -1,9 +1,12 @@
 package com.supersheros.beans;
 
+import java.util.Objects;
+
 public class Heros {
     private int id;
     private String name;
     private String password;
+    private String passwordCheck;
     private String city;
     private float cityLat;
     private float cityLong;
@@ -43,6 +46,21 @@ public class Heros {
             throw new BeanException("Champ 'Mot de passe' invalide ! (60 caractère maximum)");
         } else {
             this.password = password;
+        }
+
+    }
+
+    public String getPasswordCheck() {
+        return passwordCheck;
+    }
+
+    public void setPasswordCheck(String passwordCheck) throws BeanException {
+        if (passwordCheck.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (passwordCheck.length() > 60) {
+            throw new BeanException("Champ 'Mot de passe' invalide ! (60 caractère maximum)");
+        } else {
+            this.passwordCheck = passwordCheck;
         }
 
     }

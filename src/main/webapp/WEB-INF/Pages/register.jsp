@@ -4,6 +4,15 @@
 <head>
     <title>Inscription</title>
     <%@ include file="Composants/headCommun.jsp" %>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
 </head>
 <body>
     <h1 class="CenterText">Page d'inscription</h1>
@@ -15,7 +24,7 @@
     <%-- Todo : Ajouter latitude longitude --%>
 
     <div class="Form">
-        <form action="${pageContext.request.contextPath}/Register">
+        <form method="post" action="Register">
 
             <fieldset>
                 <legend>Inscription</legend>
@@ -50,6 +59,12 @@
                         </li>
                     </ul>
 
+
+                    <div id="map"></div>
+
+                    <script type="text/javascript" src="JS/map.js"></script>
+
+
                 </fieldset>
 
                 <fieldset>
@@ -60,7 +75,7 @@
                             <label for="PasswordHero">Mot de passe</label>
                         </li>
                         <li>
-                            <input placeholder="Mot de passe" id="PasswordHero" name="PasswordHero"/>
+                            <input placeholder="Mot de passe" id="PasswordHero" name="PasswordHero" type="password"/>
                         </li>
                     </ul>
 
@@ -69,7 +84,7 @@
                             <label for="PasswordCheckHero">Confimer le mot de passe</label>
                         </li>
                         <li>
-                            <input placeholder="Confirmer le mot de passe" id="PasswordCheckHero" name="PasswordCheckHero"/>
+                            <input placeholder="Confirmer le mot de passe" id="PasswordCheckHero" name="PasswordCheckHero" type="password"/>
                         </li>
                     </ul>
 
