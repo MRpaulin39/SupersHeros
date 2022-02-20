@@ -16,14 +16,14 @@ import java.util.Objects;
 @WebServlet(name = "Register", value = "/Register")
 public class Register extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private IncidentDao IncidentDao;
+    private IncidentDao incidentDao;
     private RegisterDao registerDao;
     private ListIncidentDao listIncidentDao;
     List<Integer> myListIncident = new ArrayList<Integer>();
 
     public void init() throws ServletException {
         DaoFactory daoFactory = DaoFactory.getInstance();
-        this.IncidentDao = daoFactory.getIncidentDao();
+        this.incidentDao = daoFactory.getIncidentDao();
         this.registerDao = daoFactory.getRegisterDao();
         this.listIncidentDao = daoFactory.getListIncidentDao();
     }
@@ -34,8 +34,9 @@ public class Register extends HttpServlet {
         if(cookies != null){
             for(Cookie cookie : cookies){
                 if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
-                    //Todo : Faire un truc + propre
-                    response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+
+                    //Renvoi vers la page d'accueil
+                    response.sendRedirect(request.getContextPath());
                 }
 
             }
@@ -43,7 +44,7 @@ public class Register extends HttpServlet {
         }
 
         try {
-            request.setAttribute("listTypeIncident", IncidentDao.lister());
+            request.setAttribute("listTypeIncident", listIncidentDao.lister());
         } catch (DaoException e) {
             request.setAttribute("erreur", e.getMessage());
         }
@@ -55,15 +56,11 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         Heros heros = new Heros();
         try {
-            heros.setName(request.getParameter("NameHero"));
-            heros.setPhone(request.getParameter("PhoneHero"));
-            heros.setCity(request.getParameter("CityHero"));
-            heros.setPassword(request.getParameter("PasswordHero"));
-            heros.setPasswordCheck(request.getParameter("PasswordCheckHero"));
-
-            for(ListIncidents incident : IncidentDao.lister()){
+            for(ListIncidents incident : listIncidentDao.lister()){
                 if (Objects.equals(request.getParameter("Cb" + incident.getId()), "on")){
                     myListIncident.add(incident.getId());
                 }
@@ -71,10 +68,13 @@ public class Register extends HttpServlet {
             }
 
             if(myListIncident.size() != 0 && myListIncident.size() <= 3){
-                //ToDo appel API pour récupérer la lat + lon de la ville entrée :
-                //Exemple : https://nominatim.openstreetmap.org/search?q=Bolbec%20france&format=json
-
-
+                heros.setName(request.getParameter("NameHero"));
+                heros.setPhone(request.getParameter("PhoneHero"));
+                heros.setCity(request.getParameter("CityHero"));
+                heros.setCityLat(Float.parseFloat(request.getParameter("CityHeroLat")));
+                heros.setCityLong(Float.parseFloat(request.getParameter("CityHeroLong")));
+                heros.setPassword(request.getParameter("PasswordHero"));
+                heros.setPasswordCheck(request.getParameter("PasswordCheckHero"));
 
                 if(registerDao.AddHeros(heros)){
                     //Ajout des incidents au hero
@@ -86,23 +86,30 @@ public class Register extends HttpServlet {
                     //Ajout de l'utilisateur au cookie
                     response.addCookie(new Cookie("NameHero", heros.getName()));
 
-                    //Todo : Faire un truc + propre
-                    response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+                    //Renvoi vers la page d'accueil
+                    response.sendRedirect(request.getContextPath());
 
                 } else {
                     request.setAttribute("erreur", "Inscription ratée !");
-                    request.setAttribute("NameHero", request.getParameter("NameHero"));
+
                 }
+
+                //On préremplie le formulaire
+                request.setAttribute("NameHero", request.getParameter("NameHero"));
+
             } else {
                 request.setAttribute("erreur", "Veuillez choisir entre 1 et 3 incident(s) que vous pouvez gérer !");
             }
 
-
-            request.setAttribute("listTypeIncident", IncidentDao.lister());
-
         } catch (BeanException | DaoException e) {
             request.setAttribute("erreur", e.getMessage());
             request.setAttribute("NameHero", request.getParameter("NameHero"));
+        }
+
+        try {
+            request.setAttribute("listTypeIncident", listIncidentDao.lister());
+        } catch (DaoException e) {
+            request.setAttribute("erreur", e.getMessage());
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/register.jsp").forward(request, response);

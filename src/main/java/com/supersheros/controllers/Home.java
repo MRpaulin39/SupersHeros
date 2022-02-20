@@ -17,21 +17,7 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //teste de l'appel API
-//        String cityName = "Saint Malot";
-//        System.out.println("Nom de la ville = " + cityName);
-//
-//        cityName = cityName.replace(" ", "%20");
-//
-//        System.out.println("Nom de la ville corrigé = " + cityName);
-//
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpRequest requestApi = HttpRequest.newBuilder().uri(URI.create("https://nominatim.openstreetmap.org/search?q=" + cityName + "%20france&format=json")).build();
-//        client.sendAsync(requestApi, HttpResponse.BodyHandlers.ofString())
-//                .thenApply(HttpResponse::body)
-//                .thenApply(Home::parse)
-//                        .join();
-//
-//        //request.setAttribute("erreur", "Inscription ratée !");
+//        System.out.println("Résultat = " + request.getContextPath());
 
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/index.jsp").forward(request, response);
@@ -42,24 +28,4 @@ public class Home extends HttpServlet {
 
     }
 
-//    //ToDo Faire un model qui transforme les villes en coordonnées et inversement
-//    public static String parse(String responsebody){
-//        System.out.println(responsebody);
-//
-//
-//        if (responsebody != null ){
-//            JSONArray albums = new JSONArray(responsebody);
-//            JSONObject album = albums.getJSONObject(0);
-//            float lat = album.getFloat("lat");
-//            float longitude = album.getFloat("lon");
-//
-//            System.out.println("Lat = " + lat + "     long = " + longitude);
-//        } else {
-//            System.out.println("Erreur, le nom de la ville n'est pas reconnu !");
-//        }
-//
-//
-//
-//        return null;
-//    }
 }

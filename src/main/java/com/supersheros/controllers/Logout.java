@@ -22,8 +22,8 @@ public class Logout extends HttpServlet {
             }
         }
 
-        //Todo : Faire un truc + propre
-        response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+        //Renvoi vers la page d'accueil
+        response.sendRedirect(request.getContextPath());
 
 
     }

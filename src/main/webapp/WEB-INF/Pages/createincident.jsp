@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <select name="NameIncident" id="NameIncident">
-                            <%--                       //TODO Faire en sorte que les options se remplissent via la BDD--%>
+                            <%-- //TODO Faire en sorte que les options se remplissent via la BDD--%>
                             <option value="0">--Choisir une option--</option>
                             <option value="1">Incendie</option>
                             <option value="2">Accident Routier</option>

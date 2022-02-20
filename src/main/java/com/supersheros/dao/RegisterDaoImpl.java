@@ -2,6 +2,7 @@ package com.supersheros.dao;
 
 import com.supersheros.beans.Heros;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.codec.Utf8;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,10 +22,12 @@ public class RegisterDaoImpl implements RegisterDao{
         String nameHero = heros.getName();
         String phoneHero = heros.getPhone();
         String cityHero = heros.getCity();
+        float cityHeroLat = heros.getCityLat();
+        float cityHeroLong = heros.getCityLong();
         String passwordHero = heros.getPassword();
         String passwordCheckHero = heros.getPasswordCheck();
 
-        //Todo Vérifier que le nom du hero et numéro de téléphone n'est pas déjà présent dans la base de données !
+        //Todo Vérifier que le hero n'est pas déjà présent dans la base de données !
 
         Connection connexion = null;
         PreparedStatement preparedstatement = null;
@@ -40,9 +43,10 @@ public class RegisterDaoImpl implements RegisterDao{
             preparedstatement.setString(1, nameHero);
             preparedstatement.setString(2, BCrypt.hashpw(passwordHero, BCrypt.gensalt(10)));
             preparedstatement.setString(3, cityHero);
-            preparedstatement.setFloat(4, (float) 10.01);
-            preparedstatement.setFloat(5, (float) 10.01);
+            preparedstatement.setFloat(4, cityHeroLat);
+            preparedstatement.setFloat(5, cityHeroLong);
             preparedstatement.setString(6, phoneHero);
+
 
             preparedstatement.executeUpdate();
 

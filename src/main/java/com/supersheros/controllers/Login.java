@@ -28,8 +28,8 @@ public class Login extends HttpServlet {
         if(cookies != null){
             for(Cookie cookie : cookies){
                 if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
-                    //Todo : Faire un truc + propre
-                    response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+                    //Renvoi vers la page d'accueil
+                    response.sendRedirect(request.getContextPath());
                 }
 
             }
@@ -53,8 +53,8 @@ public class Login extends HttpServlet {
 
                 response.addCookie(new Cookie("NameHero", heros.getName()));
 
-                //Todo : Faire un truc + propre
-                response.sendRedirect("/SupersHeros-1.0-SNAPSHOT/");
+                //Renvoi vers la page d'accueil
+                response.sendRedirect(request.getContextPath());
 
             } else {
                 request.setAttribute("erreur", "Authentification ratée !");

@@ -1,5 +1,8 @@
 package com.supersheros.beans;
 
+import org.springframework.security.crypto.codec.Utf8;
+
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 public class Heros {
@@ -62,15 +65,21 @@ public class Heros {
         } else {
             this.passwordCheck = passwordCheck;
         }
-
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCity(String city) throws BeanException{
+
+        if (city.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (city.length() > 80) {
+            throw new BeanException("Champ 'Ville' invalide ! (80 caractère maximum)");
+        } else {
+            this.city = city;
+        }
     }
 
     public float getCityLat() {

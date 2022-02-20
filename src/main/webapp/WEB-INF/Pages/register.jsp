@@ -5,6 +5,8 @@
     <title>Inscription</title>
     <%@ include file="Composants/headCommun.jsp" %>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
@@ -37,7 +39,7 @@
                             <label for="NameHero">Nom du super héro</label>
                         </li>
                         <li>
-                            <input placeholder="Nom du héro" id="NameHero" name="NameHero" />
+                            <input placeholder="Nom du héro" id="NameHero" name="NameHero"/>
                         </li>
                     </ul>
 
@@ -56,6 +58,8 @@
                         </li>
                         <li>
                             <input placeholder="Votre ville" id="CityHero" name="CityHero"/>
+                            <input id="CityHeroLat" name="CityHeroLat" type="hidden"/>
+                            <input id="CityHeroLong" name="CityHeroLong" type="hidden"/>
                         </li>
                     </ul>
 
