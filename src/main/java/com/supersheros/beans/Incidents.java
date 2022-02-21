@@ -1,58 +1,52 @@
 package com.supersheros.beans;
 
 public class Incidents {
-    private int id_incident;
-    private int id_incident_list;
+    private String nameHero;
     private String city;
-    private float cityLat;
-    private float cityLong;
-    private float cityDistance;
+    private Float cityDistance;
+    private String phone;
 
-    public int getId_incident() {
-        return id_incident;
+    public String getNameHero() {
+        return nameHero;
     }
 
-    public void setId_incident(int id_incident) {
-        this.id_incident = id_incident;
-    }
-
-    public int getId_incident_list() {
-        return id_incident_list;
-    }
-
-    public void setId_incident_list(int id_incident_list) {
-        this.id_incident_list = id_incident_list;
+    public void setNameHero(String nameHero) throws BeanException {
+        if (nameHero.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (nameHero.length() > 50) {
+            throw new BeanException("Champ 'Nom du Héro' invalide ! (50 caractère maximum)");
+        } else {
+            this.nameHero = nameHero;
+        }
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCity(String city) throws BeanException {
+        if (city.length() == 0){
+            throw new BeanException("Veuillez remplir tous les champs !");
+        } else if (city.length() > 80) {
+            throw new BeanException("Champ 'Ville' invalide ! (80 caractère maximum)");
+        } else {
+            this.city = city;
+        }
     }
 
-    public float getCityLat() {
-        return cityLat;
-    }
-
-    public void setCityLat(float cityLat) {
-        this.cityLat = cityLat;
-    }
-
-    public float getCityLong() {
-        return cityLong;
-    }
-
-    public void setCityLong(float cityLong) {
-        this.cityLong = cityLong;
-    }
-
-    public float getCityDistance() {
+    public Float getCityDistance() {
         return cityDistance;
     }
 
-    public void setCityDistance(float cityDistance) {
+    public void setCityDistance(Float cityDistance) {
         this.cityDistance = cityDistance;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

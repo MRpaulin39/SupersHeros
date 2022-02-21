@@ -73,8 +73,19 @@ nav ul li a:hover {
   height: 180px;
 }
 
+table#tableResultHero {
+  border-collapse: collapse;
+  margin: 25px auto auto;
+}
+
+table#tableResultHero td {
+  border: 2px solid black;
+  width: 100px;
+  height: 25px;
+}
+
 /* Extra Extra small devices (phones, 480px and down) */
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 320px) {
   nav ul li {
     grid-template-columns: repeat(2, 1fr);
   }

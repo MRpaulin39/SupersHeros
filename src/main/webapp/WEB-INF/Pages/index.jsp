@@ -12,7 +12,7 @@
 
     <%@ include file="Composants/menu.jsp" %>
 
-    <c:if test="${ !empty erreur }"><p style="color:red;"><c:out value="${ erreur }" /></p></c:if>
+    <c:if test="${ !empty erreur }"><p style="color:red;" class="CenterText"><c:out value="${ erreur }" /></p></c:if>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 var typingTimer;
-var doneTypingInternal = 1500;
+var doneTypingInternal = 500;
 var $cityInput = $('#CityHero')
 
 //Fonction déclenché avec le retour de l'API depuis la ville
@@ -73,6 +73,7 @@ function getAPIWithCoordinates(lat,lng){
 
 //-------------- Mise en place de la carte au centre de la France
 
+//Todo : Ajouter la vérification de coordonnéees déjà présente dans le formulaire
 
 var map = L.map('map').setView([46.02, 2.0], 4);
 
