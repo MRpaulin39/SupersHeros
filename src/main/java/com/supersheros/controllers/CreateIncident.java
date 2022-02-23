@@ -62,8 +62,9 @@ public class CreateIncident extends HttpServlet {
                 }
             }
 
-
-
+            request.setAttribute("CityHero", request.getParameter("CityHero"));
+            request.setAttribute("CityHeroLat", request.getParameter("CityHeroLat"));
+            request.setAttribute("CityHeroLong", request.getParameter("CityHeroLong"));
 
 
         } catch (DaoException e) {

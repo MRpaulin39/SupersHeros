@@ -34,9 +34,9 @@
                             <label for="CityHero">Nom de la ville</label>
                         </li>
                         <li>
-                            <input placeholder="Nom de la ville" id="CityHero" name="CityHero"/>
-                            <input id="CityHeroLat" name="CityHeroLat" type="hidden"/>
-                            <input id="CityHeroLong" name="CityHeroLong" type="hidden"/>
+                            <input placeholder="Nom de la ville" id="CityHero" name="CityHero" value="<c:if test="${ !empty CityHero }"><c:out value="${ CityHero }"></c:out></c:if>"/>
+                            <input id="CityHeroLat" name="CityHeroLat" type="hidden" value="<c:if test="${ !empty CityHeroLat }"><c:out value="${ CityHeroLat }"></c:out></c:if>"/>
+                            <input id="CityHeroLong" name="CityHeroLong" type="hidden" value="<c:if test="${ !empty CityHeroLong }"><c:out value="${ CityHeroLong }"></c:out></c:if>"/>
                         </li>
                     </ul>
 

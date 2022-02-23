@@ -10,7 +10,9 @@ public interface ListIncidentDao {
 
     List<ListIncidents> lister() throws DaoException;
 
+    List<ListIncidents> listerIncidentOfHero(String NameHero) throws DaoException;
+
     boolean addIncidentToHero(String nameHero, int id_incident) throws DaoException;
 
-    boolean deleteIncidentToHero() throws DaoException;
+    boolean deleteIncidentToHero(String nameHero) throws DaoException;
 }

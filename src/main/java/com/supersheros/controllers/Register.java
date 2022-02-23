@@ -101,15 +101,13 @@ public class Register extends HttpServlet {
                 request.setAttribute("erreur", "Veuillez choisir entre 1 et 3 incident(s) que vous pouvez gérer !");
             }
 
+            request.setAttribute("listTypeIncident", listIncidentDao.lister());
+            //Réinitialisation de la liste
+            myListIncident.clear();
+
         } catch (BeanException | DaoException e) {
             request.setAttribute("erreur", e.getMessage());
             request.setAttribute("NameHero", request.getParameter("NameHero"));
-        }
-
-        try {
-            request.setAttribute("listTypeIncident", listIncidentDao.lister());
-        } catch (DaoException e) {
-            request.setAttribute("erreur", e.getMessage());
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/register.jsp").forward(request, response);

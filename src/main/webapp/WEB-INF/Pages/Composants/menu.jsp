@@ -7,6 +7,7 @@
         <a href="${pageContext.request.contextPath}/Login">Connexion</a>
         <a href="${pageContext.request.contextPath}/Logout">Déconnexion</a>
         <a href="${pageContext.request.contextPath}/CreateIncident">Déclarer un incident</a>
+        <a href="${pageContext.request.contextPath}/Profil">Profil</a>
       </li>
     </ul>
   </nav>

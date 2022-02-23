@@ -75,7 +75,22 @@ function getAPIWithCoordinates(lat,lng){
 
 //Todo : Ajouter la vérification de coordonnéees déjà présente dans le formulaire
 
-var map = L.map('map').setView([46.02, 2.0], 4);
+var cityLat = 46.02;
+var cityLong = 2.0;
+var zoomOnMap = 4;
+
+
+if (document.getElementById("CityHeroLat").value !== "" && document.getElementById("CityHeroLong").value !== "") {
+    cityLat = document.getElementById("CityHeroLat").value;
+    cityLong = document.getElementById("CityHeroLong").value;
+    zoomOnMap = 13;
+
+}
+
+var map = L.map('map').setView([cityLat, cityLong], zoomOnMap);
+var marker = L.marker([cityLat, cityLong]);
+
+marker = L.marker([cityLat, cityLong]).addTo(map);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -85,8 +100,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibXJwYXVsaW4zOSIsImEiOiJja3pya2V4a2cwaTdsMnVwa2cwODYzdWNsIn0._4upl2NteMwEL7MblKNY2w'
 }).addTo(map);
-
-var marker = L.marker([46.02, 2.0]);
 
 
 //Fonction permettant l'ajout d'un marqueur sur la carte
@@ -112,7 +125,9 @@ function onCoordonateUpdate(lat,lng){
         map.remove();
     }
 
-    map = L.map('map').setView([lat, lng], 13);
+    zoomOnMap = 13;
+
+    map = L.map('map').setView([lat, lng], zoomOnMap);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

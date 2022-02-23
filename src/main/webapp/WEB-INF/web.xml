@@ -55,4 +55,13 @@
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Profil</servlet-name>
+        <servlet-class>com.supersheros.controllers.Profil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profil</servlet-name>
+        <url-pattern>/Profil</url-pattern>
+    </servlet-mapping>
+
 </web-app>
