@@ -16,9 +16,9 @@
             crossorigin=""></script>
 </head>
 <body>
-    <h1 class="CenterText">Créer un incident</h1>
-
     <%@ include file="Composants/menu.jsp" %>
+
+    <h1 class="CenterText">Créer un incident</h1>
 
     <c:if test="${ !empty erreur }"><p style="color:red;" class="CenterText"><c:out value="${ erreur }" /></p></c:if>
 

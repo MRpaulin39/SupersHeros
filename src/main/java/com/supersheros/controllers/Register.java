@@ -33,7 +33,7 @@ public class Register extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for(Cookie cookie : cookies){
-                if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
+                if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
 
                     //Renvoi vers la page d'accueil
                     response.sendRedirect(request.getContextPath());
@@ -102,6 +102,7 @@ public class Register extends HttpServlet {
             }
 
             request.setAttribute("listTypeIncident", listIncidentDao.lister());
+
             //Réinitialisation de la liste
             myListIncident.clear();
 

@@ -16,8 +16,8 @@ public class Logout extends HttpServlet {
                 destroyCookie.setMaxAge(0);
                 response.addCookie(destroyCookie);
 
-                if(cookie.getName().equals("NameHero")){
-                    request.setAttribute("NameHero", cookie.getValue());
+                if(cookie.getName().equals("CookieNameHero")){
+                    request.setAttribute("CookieNameHero", cookie.getValue());
                 }
             }
         }

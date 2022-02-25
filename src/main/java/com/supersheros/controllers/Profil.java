@@ -34,7 +34,7 @@ public class Profil extends HttpServlet {
         //Si l'utilisateur est authentifié
         if(cookies != null){
             for(Cookie cookie : cookies){
-                if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
+                if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
                     nameHero = cookie.getValue();
 
 
@@ -45,7 +45,7 @@ public class Profil extends HttpServlet {
 
                 //Affichage de la liste des évènements que peux gérer le Hero
                 try {
-                    request.setAttribute("NameHero", nameHero);
+                    request.setAttribute("CookieNameHero", nameHero);
                     request.setAttribute("listIncidentProfil", listIncidentDao.listerIncidentOfHero(nameHero));
                     request.setAttribute("listTypeIncident", listIncidentDao.lister());
                 } catch (DaoException e) {
@@ -73,7 +73,7 @@ public class Profil extends HttpServlet {
         //Si l'utilisateur est authentifié
         if(cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")) {
+                if (cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")) {
                     nameHero = cookie.getValue();
 
 
@@ -110,7 +110,7 @@ public class Profil extends HttpServlet {
                     }
 
                     //Récupération des informations pour la page
-                    request.setAttribute("NameHero", nameHero);
+                    request.setAttribute("CookieNameHero", nameHero);
                     request.setAttribute("listIncidentProfil", listIncidentDao.listerIncidentOfHero(nameHero));
                     request.setAttribute("listTypeIncident", listIncidentDao.lister());
 

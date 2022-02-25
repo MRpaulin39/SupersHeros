@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Objects;
 
 @WebServlet(name = "Home", value = "/Home")
 public class Home extends HttpServlet {
@@ -18,7 +19,19 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //teste de l'appel API
 //        System.out.println("Résultat = " + request.getContextPath());
+        String nameHero = "";
+        Cookie[] cookies = request.getCookies();
+        //Si l'utilisateur est authentifié
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
+                    nameHero = cookie.getValue();
 
+                }
+            }
+
+            request.setAttribute("CookieNameHero", nameHero);
+        }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/index.jsp").forward(request, response);
     }

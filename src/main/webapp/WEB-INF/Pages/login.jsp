@@ -6,16 +6,12 @@
     <%@ include file="Composants/headCommun.jsp" %>
 </head>
 <body>
-  <h1 class="CenterText">Page de connexion</h1>
-
   <%@ include file="Composants/menu.jsp" %>
+
+  <h1 class="CenterText">Page de connexion</h1>
 
   <c:if test="${ !empty erreur }"><p style="color:red;" class="CenterText"><c:out value="${ erreur }" /></p></c:if>
 
-
-  <c:if test="${ !empty sessionScope.NameHero}">
-      <p>Vous êtes déjà connecté ${sessionScope.NameHero} !</p>
-  </c:if>
 
     <div class="Form">
         <form method="post" action="Login">
@@ -49,6 +45,8 @@
                 </ul>
 
             </fieldset>
+
+            <a href="${pageContext.request.contextPath}/Register"><p class="CenterText">Pas de compte ? Inscrivez-vous !<p></p></a>
 
         </form>
 

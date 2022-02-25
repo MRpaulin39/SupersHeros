@@ -26,7 +26,22 @@ public class CreateIncident extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         try {
+            String nameHero = "";
+            Cookie[] cookies = request.getCookies();
+            //Si l'utilisateur est authentifié
+            if(cookies != null){
+                for(Cookie cookie : cookies){
+                    if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
+                        nameHero = cookie.getValue();
+
+                    }
+                }
+
+                request.setAttribute("CookieNameHero", nameHero);
+            }
+
             request.setAttribute("listTypeIncident", listIncidentDao.lister());
         } catch (DaoException e) {
             request.setAttribute("erreur", e.getMessage());
@@ -40,6 +55,20 @@ public class CreateIncident extends HttpServlet {
         //Todo : Récupération de la liste des héro à 50km de l'incident
 
         try {
+            String nameHero = "";
+            Cookie[] cookies = request.getCookies();
+            //Si l'utilisateur est authentifié
+            if(cookies != null){
+                for(Cookie cookie : cookies){
+                    if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
+                        nameHero = cookie.getValue();
+
+                    }
+                }
+
+                request.setAttribute("CookieNameHero", nameHero);
+            }
+
             if (request.getParameter("CityHeroLat").isEmpty() || request.getParameter("CityHeroLong").isEmpty()){
                 request.setAttribute("erreur", "Veuillez inscrire une ville !");
                 request.setAttribute("listTypeIncident", listIncidentDao.lister());

@@ -6,11 +6,9 @@
     <%@ include file="Composants/headCommun.jsp" %>
 </head>
 <body>
-    <h1 class="CenterText">Super Hero</h1>
-
-    <h2 class="CenterText">Profil de <c:if test="${ !empty NameHero }"><c:out value="${ NameHero }"></c:out></c:if></h2>
-
     <%@ include file="Composants/menu.jsp" %>
+
+    <h2 class="CenterText">Profil de <c:out value="${ CookieNameHero }"></c:out></h2>
 
     <c:if test="${ !empty erreur }"><p style="color:red;" class="CenterText"><c:out value="${ erreur }" /></p></c:if>
     <c:if test="${ !empty succes }"><p style="color:lightskyblue;" class="CenterText"><c:out value="${ succes }" /></p></c:if>

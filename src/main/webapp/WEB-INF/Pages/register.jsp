@@ -17,9 +17,9 @@
 
 </head>
 <body>
-    <h1 class="CenterText">Page d'inscription</h1>
-
     <%@ include file="Composants/menu.jsp" %>
+
+    <h1 class="CenterText">Page d'inscription</h1>
 
     <c:if test="${ !empty erreur }"><p style="color:red;" class="CenterText"><c:out value="${ erreur }" /></p></c:if>
 
@@ -129,7 +129,11 @@
 
         </form>
 
+
     </div>
+
+    <a href="${pageContext.request.contextPath}/Login"><p class="CenterText">Vous avez déjà un compte ? Connectez-vous !<p></p></a>
+
 
 </body>
 </html>

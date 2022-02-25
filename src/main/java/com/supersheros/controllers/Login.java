@@ -27,10 +27,12 @@ public class Login extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for(Cookie cookie : cookies){
-                if(cookie.getName().equals("NameHero") && !Objects.equals(cookie.getValue(), "")){
+                if(cookie.getName().equals("CookieNameHero") && !Objects.equals(cookie.getValue(), "")){
                     //Renvoi vers la page d'accueil
                     response.sendRedirect(request.getContextPath());
                 }
+
+                request.setAttribute("CookieNameHero", "");
 
             }
 
@@ -51,7 +53,7 @@ public class Login extends HttpServlet {
             if(loginDao.checkAuthentification(heros)){
                 request.setAttribute("erreur", "Authentification réussi !");
 
-                response.addCookie(new Cookie("NameHero", heros.getName()));
+                response.addCookie(new Cookie("CookieNameHero", heros.getName()));
 
                 //Renvoi vers la page d'accueil
                 response.sendRedirect(request.getContextPath());
