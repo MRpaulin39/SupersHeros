@@ -98,7 +98,7 @@ public class Register extends HttpServlet {
                 request.setAttribute("NameHero", request.getParameter("NameHero"));
 
             } else {
-                request.setAttribute("erreur", "Veuillez choisir entre 1 et 3 incident(s) que vous pouvez gérer !");
+                request.setAttribute("erreur", "Veuillez choisir entre 1 et 3 incidents que vous pouvez gérer !");
             }
 
             request.setAttribute("listTypeIncident", listIncidentDao.lister());
