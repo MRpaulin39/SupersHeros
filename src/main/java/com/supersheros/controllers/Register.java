@@ -84,7 +84,7 @@ public class Register extends HttpServlet {
                     }
 
                     //Ajout de l'utilisateur au cookie
-                    response.addCookie(new Cookie("NameHero", heros.getName()));
+                    response.addCookie(new Cookie("CookieNameHero", heros.getName()));
 
                     //Renvoi vers la page d'accueil
                     response.sendRedirect(request.getContextPath());
