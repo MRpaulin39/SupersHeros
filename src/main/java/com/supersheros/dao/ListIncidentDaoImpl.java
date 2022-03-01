@@ -1,14 +1,11 @@
 package com.supersheros.dao;
 
 import com.supersheros.beans.BeanException;
-import com.supersheros.beans.Heros;
 import com.supersheros.beans.ListIncidents;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ListIncidentDaoImpl implements ListIncidentDao{
     private DaoFactory daoFactory;
@@ -133,7 +130,6 @@ public class ListIncidentDaoImpl implements ListIncidentDao{
     public boolean deleteIncidentToHero(String nameHero) throws DaoException {
         Connection connexion = null;
         PreparedStatement preparedstatement = null;
-        ResultSet resultat = null;
 
         try {
             connexion = daoFactory.getConnection();

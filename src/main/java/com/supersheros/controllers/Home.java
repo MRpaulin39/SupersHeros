@@ -1,16 +1,9 @@
 package com.supersheros.controllers;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Objects;
 
 @WebServlet(name = "Home", value = "/Home")

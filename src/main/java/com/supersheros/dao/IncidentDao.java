@@ -1,6 +1,5 @@
 package com.supersheros.dao;
 
-import com.supersheros.beans.Heros;
 import com.supersheros.beans.Incidents;
 
 import java.util.List;

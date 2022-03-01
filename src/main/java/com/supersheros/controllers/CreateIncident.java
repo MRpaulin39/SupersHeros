@@ -1,6 +1,5 @@
 package com.supersheros.controllers;
 
-import com.supersheros.beans.Incidents;
 import com.supersheros.dao.DaoException;
 import com.supersheros.dao.DaoFactory;
 import com.supersheros.dao.IncidentDao;
@@ -10,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Objects;
 
 @WebServlet(name = "CreateIncident", value = "/CreateIncident")
@@ -18,7 +16,7 @@ public class CreateIncident extends HttpServlet {
     private ListIncidentDao listIncidentDao;
     private IncidentDao incidents;
 
-    public void init() throws ServletException {
+    public void init() {
         DaoFactory daoFactory = DaoFactory.getInstance();
         this.listIncidentDao = daoFactory.getListIncidentDao();
         this.incidents = daoFactory.getIncidentDao();

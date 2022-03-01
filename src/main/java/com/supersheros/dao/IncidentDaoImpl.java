@@ -14,8 +14,6 @@ import java.util.List;
 public class IncidentDaoImpl implements IncidentDao {
     private DaoFactory daoFactory;
 
-    private static final DecimalFormat df = new DecimalFormat("0.00");
-
     IncidentDaoImpl(DaoFactory daoFactory) {
         this.daoFactory = daoFactory;
     }

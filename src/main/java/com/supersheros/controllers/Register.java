@@ -21,7 +21,7 @@ public class Register extends HttpServlet {
     private ListIncidentDao listIncidentDao;
     List<Integer> myListIncident = new ArrayList<Integer>();
 
-    public void init() throws ServletException {
+    public void init() {
         DaoFactory daoFactory = DaoFactory.getInstance();
         this.incidentDao = daoFactory.getIncidentDao();
         this.registerDao = daoFactory.getRegisterDao();

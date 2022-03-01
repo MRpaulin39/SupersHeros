@@ -3,7 +3,6 @@ package com.supersheros.controllers;
 import com.supersheros.beans.ListIncidents;
 import com.supersheros.dao.DaoException;
 import com.supersheros.dao.DaoFactory;
-import com.supersheros.dao.IncidentDao;
 import com.supersheros.dao.ListIncidentDao;
 
 import javax.servlet.ServletException;
@@ -22,7 +21,7 @@ public class Profil extends HttpServlet {
     private ListIncidentDao listIncidentDao;
     List<Integer> myListIncident = new ArrayList<Integer>();
 
-    public void init() throws ServletException {
+    public void init() {
         DaoFactory daoFactory = DaoFactory.getInstance();
         this.listIncidentDao = daoFactory.getListIncidentDao();
     }

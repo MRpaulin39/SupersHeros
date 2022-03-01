@@ -2,7 +2,6 @@ package com.supersheros.beans;
 
 public class Incidents {
     private String nameHero;
-    private String city;
     private Float cityDistance;
     private String phone;
 
@@ -27,11 +26,22 @@ public class Incidents {
         }
     }
 
+    public Float getCityDistance() {
+        return cityDistance;
+    }
+
     /**
      * @param cityDistance La distance calculé entre les coordonnées de l'habitat du hérp et celui de l'incident
      */
     public void setCityDistance(Float cityDistance) {
         this.cityDistance = cityDistance;
+    }
+
+    /**
+     * @return Le numéro de téléphone du héro
+     */
+    public String getPhone() {
+        return phone;
     }
 
     /**

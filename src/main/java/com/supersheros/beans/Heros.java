@@ -1,12 +1,6 @@
 package com.supersheros.beans;
 
-import org.springframework.security.crypto.codec.Utf8;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-
 public class Heros {
-    private int id;
     private String name;
     private String password;
     private String passwordCheck;

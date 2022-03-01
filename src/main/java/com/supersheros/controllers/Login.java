@@ -17,7 +17,7 @@ public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private LoginDao loginDao;
 
-    public void init() throws ServletException {
+    public void init() {
         DaoFactory daoFactory = DaoFactory.getInstance();
         this.loginDao = daoFactory.getLoginDao();
     }

@@ -2,16 +2,14 @@ package com.supersheros.dao;
 
 import com.supersheros.beans.Heros;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.codec.Utf8;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
 public class RegisterDaoImpl implements RegisterDao{
-    private DaoFactory daoFactory;
+    private final DaoFactory daoFactory;
 
     RegisterDaoImpl(DaoFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -27,11 +25,8 @@ public class RegisterDaoImpl implements RegisterDao{
         String passwordHero = heros.getPassword();
         String passwordCheckHero = heros.getPasswordCheck();
 
-        //Todo Vérifier que le hero n'est pas déjà présent dans la base de données !
-
         Connection connexion = null;
         PreparedStatement preparedstatement = null;
-        ResultSet resultat = null;
 
         try {
             if (!Objects.equals(passwordHero, passwordCheckHero)){

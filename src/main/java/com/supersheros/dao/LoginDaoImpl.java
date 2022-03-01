@@ -1,10 +1,10 @@
 package com.supersheros.dao;
 
-import com.supersheros.beans.BeanException;
 import com.supersheros.beans.Heros;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.sql.*;
+import java.util.Objects;
 
 public class LoginDaoImpl implements LoginDao{
     private DaoFactory daoFactory;
@@ -35,15 +35,11 @@ public class LoginDaoImpl implements LoginDao{
             }
 
             //Vérification qu'on a bien récupérer une valeur
-            if (passwordUserInBDD == ""){
+            if (Objects.equals(passwordUserInBDD, "")){
                 throw new DaoException("Utilisateur inconnu de la base de données");
             }
 
-            if(BCrypt.checkpw(passwordHero, passwordUserInBDD)){
-                return true;
-            } else {
-                return false;
-            }
+            return BCrypt.checkpw(passwordHero, passwordUserInBDD);
 
         } catch (SQLException e) {
             throw new DaoException("Impossible de communiquer avec la base de données 1 : " + e.getMessage());
