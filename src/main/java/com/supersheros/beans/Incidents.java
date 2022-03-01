@@ -6,10 +6,17 @@ public class Incidents {
     private Float cityDistance;
     private String phone;
 
+    /**
+     * @return Le nom du héro
+     */
     public String getNameHero() {
         return nameHero;
     }
 
+    /**
+     * @param nameHero Le nom du héro
+     * @throws BeanException Exception de modèle
+     */
     public void setNameHero(String nameHero) throws BeanException {
         if (nameHero.length() == 0){
             throw new BeanException("Veuillez remplir tous les champs !");
@@ -20,32 +27,16 @@ public class Incidents {
         }
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) throws BeanException {
-        if (city.length() == 0){
-            throw new BeanException("Veuillez remplir tous les champs !");
-        } else if (city.length() > 80) {
-            throw new BeanException("Champ 'Ville' invalide ! (80 caractère maximum)");
-        } else {
-            this.city = city;
-        }
-    }
-
-    public Float getCityDistance() {
-        return cityDistance;
-    }
-
+    /**
+     * @param cityDistance La distance calculé entre les coordonnées de l'habitat du hérp et celui de l'incident
+     */
     public void setCityDistance(Float cityDistance) {
         this.cityDistance = cityDistance;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
+    /**
+     * @param phone Le numéro de téléphone du héro
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }

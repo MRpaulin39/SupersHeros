@@ -50,8 +50,6 @@ public class Register extends HttpServlet {
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/register.jsp").forward(request, response);
-
-
     }
 
     @Override

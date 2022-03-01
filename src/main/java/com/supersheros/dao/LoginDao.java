@@ -7,8 +7,8 @@ public interface LoginDao {
 
 
     /**
-     * @return Retourne TRUE si authentification réussit
-     * @throws DaoException
+     * @return Boolean (True = OK, False = NOK)
+     * @throws DaoException Exception de base de données
      */
     boolean checkAuthentification(Heros heros) throws DaoException;
 }

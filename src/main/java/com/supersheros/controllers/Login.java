@@ -39,8 +39,6 @@ public class Login extends HttpServlet {
         }
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/Pages/login.jsp").forward(request, response);
-
-
     }
 
     @Override

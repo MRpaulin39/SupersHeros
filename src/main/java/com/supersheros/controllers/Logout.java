@@ -24,8 +24,6 @@ public class Logout extends HttpServlet {
 
         //Renvoi vers la page d'accueil
         response.sendRedirect(request.getContextPath());
-
-
     }
 
     @Override
