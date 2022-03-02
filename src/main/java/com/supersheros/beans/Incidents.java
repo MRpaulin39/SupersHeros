@@ -26,6 +26,9 @@ public class Incidents {
         }
     }
 
+    /**
+     * @return La distance calculé dans la BDD
+     */
     public Float getCityDistance() {
         return cityDistance;
     }
